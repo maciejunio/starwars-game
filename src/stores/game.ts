@@ -42,7 +42,6 @@ export const useGameStore = defineStore('game', () => {
   })
 
   function incrementScore(player: Ref<Player>) {
-    console.log(player)
     player.value.score += 1
   }
 

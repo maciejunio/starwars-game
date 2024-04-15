@@ -3,13 +3,12 @@ import { computed, ref } from 'vue'
 import { BarChart, useBarChart } from 'vue-chart-3'
 import { Chart, type ChartData, registerables, type ChartOptions } from 'chart.js'
 import { useGameStore } from '@/stores/game'
-import { storeToRefs } from 'pinia'
-const { firstPlayer, secondPlayer } = storeToRefs(useGameStore())
+const { peoplePlayer, starshipPlayer } = useGameStore()
 
 Chart.register(...registerables)
 
-const dataValues = computed(() => [firstPlayer.value.score, secondPlayer.value.score])
-const dataLabels = ref([firstPlayer.value.name, secondPlayer.value.name])
+const dataValues = computed(() => [peoplePlayer.value.score, starshipPlayer.value.score])
+const dataLabels = ref([peoplePlayer.value.name, starshipPlayer.value.name])
 
 const testData = computed<ChartData<'bar'>>(() => ({
   labels: dataLabels.value,

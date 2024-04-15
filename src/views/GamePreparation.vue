@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useGameStore, DeckType } from '@/stores/game'
 import { storeToRefs } from 'pinia'
+import { useGameStore, DeckType } from '@/stores/game'
+import { useAuthStore } from '@/stores/auth'
 
+const { logOut } = useAuthStore()
 const { numberOfPlayers, firstPlayer, secondPlayer } = storeToRefs(useGameStore())
 
 const deckOptions = [DeckType.People, DeckType.Starships]
@@ -25,15 +27,16 @@ function clearSelections(): void {
   <div class="d-flex align-center justify-center" style="height: 100vh">
     <v-sheet width="400" class="mx-auto">
       <v-select
-        label="Number of players"
         v-model="numberOfPlayers"
+        id="numberOfPlayers"
+        label="Number of players"
         :items="numberOfPlayersOptions"
         @update:modelValue="clearSelections"
       ></v-select>
       <v-text-field label="First player name" v-model="firstPlayer.name"></v-text-field>
       <v-select
-        label="First player deck"
         v-model="firstPlayer.deck"
+        label="First player deck"
         :items="firstPlayerDeckOptions"
         clearable
         clear-icon="mdi-close-circle"
@@ -50,6 +53,7 @@ function clearSelections(): void {
       </template>
 
       <v-btn color="primary" block class="mt-2" @click="$router.push({ name: 'Game' })">Play</v-btn>
+      <v-btn color="primary" block class="mt-2" @click="logOut">Logout</v-btn>
     </v-sheet>
   </div>
 </template>

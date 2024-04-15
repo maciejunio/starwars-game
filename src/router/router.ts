@@ -39,9 +39,9 @@ router.beforeEach((to, from, next) => {
   const authStroe = useAuthStore()
 
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    // if (!authStroe.user) {
-    //   return next({ name: 'Login' })
-    // }
+    if (!authStroe.user) {
+      return next({ name: 'Login' })
+    }
     next()
   } else {
     next()

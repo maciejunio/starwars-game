@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { collection, getFirestore } from 'firebase/firestore'
+import { getFirestore } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
 
 export const firebaseApp = initializeApp({
@@ -14,5 +14,3 @@ export const firebaseApp = initializeApp({
 export const fireDb = getFirestore(firebaseApp)
 
 export const auth = getAuth()
-
-export const cardsRef = await collection(fireDb, 'cards')
