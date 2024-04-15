@@ -3,13 +3,13 @@ import { useAuthStore } from '@/stores/auth'
 import { ref, onErrorCaptured } from 'vue'
 
 const authStore = useAuthStore()
-const username = ref()
+const email = ref()
 const password = ref()
 const showErrorSnackBar = ref(false)
 const errorMsg = ref('')
 
 async function login() {
-  await authStore.logIn(username.value, password.value)
+  await authStore.logIn(email.value, password.value)
 }
 
 onErrorCaptured((err) => {
@@ -26,9 +26,9 @@ onErrorCaptured((err) => {
     </v-snackbar>
     <v-sheet width="400" class="mx-auto">
       <v-form fast-fail @submit.prevent="login">
-        <v-text-field v-model="username" id="email-input" label="Email" type="email"></v-text-field>
+        <v-text-field v-model="email" id="email-input" label="Email" type="email"></v-text-field>
         <v-text-field v-model="password" id="password-input" label="Password" type="password"></v-text-field>
-        <v-btn type="submit" id="submitBtn" color="primary" block class="mt-2">Sign in</v-btn>
+        <v-btn :disabled="!email || !password" type="submit" id="submitBtn" color="primary" block class="mt-2">Sign in</v-btn>
       </v-form>
       <div class="mt-2">
         <p class="text-body-2">

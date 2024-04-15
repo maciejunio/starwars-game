@@ -29,7 +29,6 @@ export const useGameStore = defineStore('game', () => {
     if (firstPlayer.value.deck === DeckType.People) {
       return firstPlayer
     }
-
     return secondPlayer
   })
 
@@ -37,7 +36,6 @@ export const useGameStore = defineStore('game', () => {
     if (firstPlayer.value.deck === DeckType.Starships) {
       return firstPlayer
     }
-
     return secondPlayer
   })
 
