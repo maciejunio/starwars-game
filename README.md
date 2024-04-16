@@ -1,8 +1,17 @@
 # starwars-game
 
-## Recommended IDE Setup
+### Todo
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- [ ] Add e2e tests
+- [ ] Production build optimization
+
+### In Progress
+
+- [ ] Add e2e tests
+
+### Done ✓
+
+- [x] Add some unit tests 
 
 ## Type Support for `.vue` Imports in TS
 
